@@ -77,19 +77,33 @@ python -c "import torch; print('PyTorch version:', torch.__version__)"
 
 ## Getting Started
 
+### Interactive Notebooks
+
 1. Activate your virtual environment (if not already activated)
 2. Launch Jupyter Notebook:
    ```bash
    jupyter notebook
    ```
-3. Open the exercises in order:
+3. Work through the exercises in order:
    - `01_hello_pytorch.ipynb` - PyTorch basics
    - `02_load_mnist.ipynb` - Load and explore data
    - `03_create_model.ipynb` - Build a neural network
    - `04_train_model.ipynb` - Train the model
    - `05_evaluate_model.ipynb` - Evaluate performance
    - `06_inference.ipynb` - Make predictions
-   - `07_transformer_model.ipynb` - Build a Vision Transformer
+
+### Advanced: Vision Transformer (Python Script)
+
+Train a Vision Transformer model from the command line:
+```bash
+python train_transformer.py
+```
+
+This demonstrates:
+- Patch-based image processing
+- Multi-head self-attention
+- Positional embeddings
+- Modern transformer architecture
 
 ## What You'll Learn
 
@@ -98,7 +112,7 @@ python -c "import torch; print('PyTorch version:', torch.__version__)"
 - Building neural networks with PyTorch (fully-connected and transformers)
 - Training and evaluating models
 - Making predictions on handwritten digits
-- Understanding attention mechanisms and Vision Transformers
+- **Advanced**: Understanding attention mechanisms and Vision Transformers
 
 ## Resources
 
