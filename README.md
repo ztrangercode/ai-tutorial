@@ -36,7 +36,7 @@ Learn how to train a neural network to recognize handwritten digits using the MN
 3. **Install required packages**
    ```bash
    pip install --upgrade pip
-   pip install torch torchvision numpy matplotlib jupyter scikit-learn seaborn
+   pip install torch torchvision numpy matplotlib jupyter scikit-learn seaborn scipy
    ```
 
 ### Windows
@@ -64,7 +64,7 @@ Learn how to train a neural network to recognize handwritten digits using the MN
 3. **Install required packages**
    ```cmd
    pip install --upgrade pip
-   pip install torch torchvision numpy matplotlib jupyter scikit-learn seaborn
+   pip install torch torchvision numpy matplotlib jupyter scikit-learn seaborn scipy
    ```
 
 ## Verify Installation
@@ -82,15 +82,23 @@ python -c "import torch; print('PyTorch version:', torch.__version__)"
    ```bash
    jupyter notebook
    ```
-3. Open the tutorial notebooks in the `examples/` directory
+3. Open the exercises in order:
+   - `01_hello_pytorch.ipynb` - PyTorch basics
+   - `02_load_mnist.ipynb` - Load and explore data
+   - `03_create_model.ipynb` - Build a neural network
+   - `04_train_model.ipynb` - Train the model
+   - `05_evaluate_model.ipynb` - Evaluate performance
+   - `06_inference.ipynb` - Make predictions
+   - `07_transformer_model.ipynb` - Build a Vision Transformer
 
 ## What You'll Learn
 
 - Setting up a Python ML development environment
 - Loading and exploring the MNIST dataset
-- Building a neural network with PyTorch
-- Training and evaluating the model
+- Building neural networks with PyTorch (fully-connected and transformers)
+- Training and evaluating models
 - Making predictions on handwritten digits
+- Understanding attention mechanisms and Vision Transformers
 
 ## Resources
 
