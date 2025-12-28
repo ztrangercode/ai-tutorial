@@ -62,7 +62,7 @@ npx expo start
 ```
 
 > [!TIP]
-> **Physical Device Testing**: For physical devices, you must update the `API_BASE_URL` in `DigitRecognizer/api/inference.ts` to your Mac's IP address (e.g., `http://192.168.1.100:5000`).
+> **Physical Device Testing**: The app now automatically detects your computer's IP address. Just ensure both the phone and computer are on the same Wi-Fi network.
 
 ---
 

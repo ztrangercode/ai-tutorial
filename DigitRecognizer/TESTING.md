@@ -18,18 +18,9 @@ You should see:
 Starting server on http://0.0.0.0:5000
 ```
 
-### 2. Update API URL (Physical Device Only)
+### 2. Physical Device Connection
 
-If testing on your Samsung Galaxy S24 Ultra (not emulator):
-
-1. Find your Mac's IP address:
-   ```bash
-   ipconfig getifaddr en0
-   ```
-
-2. Edit `DigitRecognizer/api/inference.ts`:
-   - Change line 15 from `'http://10.0.2.2:5000'`
-   - To `'http://YOUR_MAC_IP:5000'` (e.g., `'http://192.168.1.100:5000'`)
+The app now automatically detects your computer's IP address via Expo. Simply ensure your **Samsung Galaxy S24 Ultra** (or other device) and your **Mac** are connected to the **same Wi-Fi network**.
 
 ### 3. Run the React Native App
 

@@ -12,8 +12,14 @@ export interface ApiError {
     error: string;
 }
 
-const API_BASE_URL = 'http://192.168.1.190:5000'; // Updated to your current IP
-// For physical device, replace with your computer's IP: 'http://192.168.1.XXX:5000'
+import Constants from 'expo-constants';
+
+// Dynamically determine the host IP address from the Expo manifest
+// hostUri looks like '192.168.1.190:8081' - we extract the IP and use port 5000
+const hostUri = Constants.expoConfig?.hostUri || Constants.manifest2?.extra?.expoGo?.debuggerHost || '';
+const hostIp = hostUri.split(':')[0];
+
+const API_BASE_URL = hostIp ? `http://${hostIp}:5000` : 'http://localhost:5000';
 
 /**
  * Send image to inference server and get prediction
