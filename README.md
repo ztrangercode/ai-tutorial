@@ -29,14 +29,32 @@ cd ai-tutorial
 uv run jupyter notebook
 ```
 
-### 3. AI Exercise Path
-Work through the notebooks in the `exercises/` directory:
-- `01_hello_pytorch.ipynb` - PyTorch basics
-- `02_load_mnist.ipynb` - Load and explore data
-- `03_create_model.ipynb` - Build a neural network
-- `04_train_model.ipynb` - Train the model
-- `05_evaluate_model.ipynb` - Evaluate performance
-- `06_inference.ipynb` - Make predictions
+## 📚 Exercises
+
+1.  **01_hello_pytorch.ipynb**: Introduction to Tensors and PyTorch basics.
+2.  **02_load_mnist.ipynb**: Loading and exploring the MNIST dataset.
+3.  **03_create_model.ipynb**: Building a neural network for digit recognition.
+4.  **04_train_model.ipynb**: Training the neural network.
+5.  **05_evaluate_model.ipynb**: Evaluating the model's performance.
+6.  **06_inference.ipynb**: Using the trained model for inference on new images.
+7.  **07_convert_to_tfjs.ipynb**: **[New]** Exporting PyTorch models to TensorFlow.js for on-device mobile inference.
+
+---
+
+## 📱 Mobile Apps
+
+This project includes two versions of the React Native app:
+
+### 1. Standard (Online Mode)
+- **Location**: `/DigitRecognizer`
+- **Architecture**: Mobile App -> Flask API (`inference_server.py`) -> PyTorch Model.
+- **Best for**: Learning about AI APIs and backend integration.
+
+### 2. Local AI (Offline Mode)
+- **Location**: `/DigitRecognizerLocal`
+- **Architecture**: Mobile App -> Local TensorFlow.js Model.
+- **Best for**: Learning about on-device AI and minimizing latency/costs.
+- **Run**: `cd DigitRecognizerLocal && npx expo start`
 
 ---
 

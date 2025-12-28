@@ -3,7 +3,7 @@ name = "ai-tutorial"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = [
     "flask>=3.1.2",
     "flask-cors>=6.0.2",
