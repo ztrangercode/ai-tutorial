@@ -3,7 +3,7 @@
  * Supports touch and S-Pen input for drawing digits
  */
 
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import {
     View,
     StyleSheet,
@@ -44,6 +44,13 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
     const [strokes, setStrokes] = useState<Stroke[]>([]);
     const [currentStroke, setCurrentStroke] = useState<Point[]>([]);
 
+    const hasDrawing = strokes.length > 0 || currentStroke.length > 0;
+
+    // Use useEffect to sync drawing state to parent safely
+    useEffect(() => {
+        onDrawingChange?.(hasDrawing);
+    }, [hasDrawing, onDrawingChange]);
+
     const createPathData = (points: Point[]): string => {
         if (points.length === 0) return '';
 
@@ -58,17 +65,11 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
         setCurrentStroke(current => {
             if (current.length > 0) {
                 const path = createPathData(current);
-                setStrokes(prev => {
-                    const newStrokes = [...prev, { points: current, path }];
-                    if (prev.length === 0) {
-                        onDrawingChange?.(true);
-                    }
-                    return newStrokes;
-                });
+                setStrokes(prev => [...prev, { points: current, path }]);
             }
             return [];
         });
-    }, [onDrawingChange]);
+    }, []);
 
     const panResponder = useRef(
         PanResponder.create({
@@ -93,11 +94,8 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
     const clearCanvas = () => {
         setStrokes([]);
         setCurrentStroke([]);
-        onDrawingChange?.(false);
         onClear?.();
     };
-
-    const hasDrawing = strokes.length > 0 || currentStroke.length > 0;
 
     return (
         <View style={styles.container}>

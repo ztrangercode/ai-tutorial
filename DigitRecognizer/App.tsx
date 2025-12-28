@@ -5,7 +5,10 @@
 
 import React, { useRef, useState } from 'react';
 import {
+  SafeAreaProvider,
   SafeAreaView,
+} from 'react-native-safe-area-context';
+import {
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -55,32 +58,34 @@ const App: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Digit Recognizer</Text>
-          <Text style={styles.subtitle}>Draw a digit (0-9) below</Text>
-        </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Digit Recognizer</Text>
+            <Text style={styles.subtitle}>Draw a digit (0-9) below</Text>
+          </View>
 
-        <DrawingCanvas
-          canvasRef={canvasRef}
-          onDrawingChange={setHasDrawing}
-          onClear={handleClear}
-        />
+          <DrawingCanvas
+            canvasRef={canvasRef}
+            onDrawingChange={setHasDrawing}
+            onClear={handleClear}
+          />
 
-        <TouchableOpacity
-          style={[styles.predictButton, (!hasDrawing || loading) && styles.predictButtonDisabled]}
-          onPress={handlePredict}
-          disabled={!hasDrawing || loading}>
-          <Text style={styles.predictButtonText}>
-            {loading ? 'Analyzing...' : 'Predict Digit'}
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.predictButton, (!hasDrawing || loading) && styles.predictButtonDisabled]}
+            onPress={handlePredict}
+            disabled={!hasDrawing || loading}>
+            <Text style={styles.predictButtonText}>
+              {loading ? 'Analyzing...' : 'Predict Digit'}
+            </Text>
+          </TouchableOpacity>
 
-        <PredictionDisplay prediction={prediction} loading={loading} />
-      </ScrollView>
-    </SafeAreaView>
+          <PredictionDisplay prediction={prediction} loading={loading} />
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

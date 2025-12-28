@@ -55,21 +55,40 @@ transform = transforms.Compose([
 def preprocess_image(image_data):
     """
     Preprocess base64 image data for model input.
-    
-    Args:
-        image_data: Base64 encoded image string
-    
-    Returns:
-        Preprocessed tensor ready for model
+    Detects digit bounding box, crops, and centers with padding for better accuracy.
     """
     # Decode base64
     image_bytes = base64.b64decode(image_data)
-    image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
+    image = Image.open(io.BytesIO(image_bytes)).convert('L')
     
-    # Invert colors: canvas is black-on-white, MNIST is white-on-black
+    # Invert colors: canvas is black-on-white (255), MNIST is white (255) on black (0)
     image = ImageOps.invert(image)
     
-    # Apply transforms
+    # Find bounding box of the digit
+    bbox = image.getbbox()
+    
+    if bbox:
+        # 1. Crop to the digit
+        image = image.crop(bbox)
+        
+        # 2. Make it square by adding padding
+        w, h = image.size
+        max_dim = max(w, h)
+        
+        # MNIST digits are roughly 20x20 centered in 28x28 (approx 20% margin)
+        padding = int(max_dim * 0.2)
+        new_size = max_dim + 2 * padding
+        
+        # Create new black background image
+        container = Image.new('L', (new_size, new_size), 0)
+        
+        # Paste original image into center
+        offset_x = padding + (max_dim - w) // 2
+        offset_y = padding + (max_dim - h) // 2
+        container.paste(image, (offset_x, offset_y))
+        image = container
+
+    # Apply remaining transforms (Resize, ToTensor, Normalize)
     tensor = transform(image)
     
     return tensor
