@@ -27,7 +27,7 @@ export const PredictionDisplay: React.FC<PredictionDisplayProps> = ({
     if (!prediction) {
         return (
             <View style={styles.container}>
-                <Text style={styles.placeholderText}>✨ CODE UPDATED v2 ✨ Draw and predict!</Text>
+                <Text style={styles.placeholderText}>Draw a digit above and tap Predict!</Text>
             </View>
         );
     }
@@ -36,9 +36,6 @@ export const PredictionDisplay: React.FC<PredictionDisplayProps> = ({
         <View style={styles.container}>
             <Text style={styles.label}>Prediction:</Text>
             <Text style={styles.digit}>{prediction.digit}</Text>
-            <Text style={styles.confidence}>
-                Confidence: {(prediction.confidence * 100).toFixed(1)}%
-            </Text>
 
             <View style={styles.probabilitiesContainer}>
                 <Text style={styles.probabilitiesTitle}>All Probabilities:</Text>
@@ -79,12 +76,6 @@ const styles = StyleSheet.create({
         fontSize: 72,
         fontWeight: 'bold',
         color: '#2196F3',
-        marginBottom: 8,
-    },
-    confidence: {
-        fontSize: 20,
-        color: '#4CAF50',
-        fontWeight: '600',
         marginBottom: 24,
     },
     loadingText: {
