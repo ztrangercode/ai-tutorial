@@ -57,11 +57,8 @@ cd DigitRecognizer
 # Install JS dependencies
 npm install
 
-# Run on Android
-npm run android
-
-# Run on iOS
-npm run ios
+# Start Expo (Scan QR code with Expo Go app)
+npx expo start
 ```
 
 > [!TIP]

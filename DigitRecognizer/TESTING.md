@@ -36,9 +36,14 @@ If testing on your Samsung Galaxy S24 Ultra (not emulator):
 In a new terminal:
 
 ```bash
-cd /Users/fredrik/source/ai-tutorial/DigitRecognizer
-npm run android
+cd DigitRecognizer
+npx expo start
 ```
+
+1.  A QR code will appear in your terminal.
+2.  Open the **Expo Go** app on your Samsung/Android phone.
+3.  Scan the QR code.
+4.  The app will load instantly!
 
 ## ✅ Testing Checklist
 
