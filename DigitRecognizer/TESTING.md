@@ -20,7 +20,7 @@ Starting server on http://0.0.0.0:5000
 
 ### 2. Physical Device Connection
 
-The app now automatically detects your computer's IP address via Expo. Simply ensure your **Samsung Galaxy S24 Ultra** (or other device) and your **Mac** are connected to the **same Wi-Fi network**.
+The app now automatically detects your computer's IP address via Expo. Simply ensure your **Samsung Galaxy S24 Ultra** (or other device) and your **computer** are connected to the **same Wi-Fi network**.
 
 ### 3. Run the React Native App
 

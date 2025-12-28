@@ -15,8 +15,14 @@ This repository is split into two main parts:
 We use **[uv](https://astral.sh/uv/)** for fast, reliable Python dependency management.
 
 ### 1. Install uv
+We recommend the official installer:
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Alternatively, if you prefer not to use remote scripts or are on a restricted machine, you can install via pip:
+```bash
+pip install uv
 ```
 
 ### 2. Setup & Run Notebooks
@@ -76,7 +82,7 @@ npx expo start
 ## 🔧 Troubleshooting
 
 -   **Inference Server**: Ensure the server is running on port 5000 before pressing "Predict" in the app.
--   **Network Error**: If using a physical device, ensure both the phone and Mac are on the same Wi-Fi network and the IP address is correctly configured.
+-   **Network Error**: If using a physical device, ensure both the phone and computer are on the same Wi-Fi network and the IP address is correctly configured.
 -   **Inaccurate Predictions**: The model expects white digits on a black background. Our server handles this automatically by inverting your drawing before inference.
 
 ## 🎓 Learning Outcomes
