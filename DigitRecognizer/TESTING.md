@@ -7,9 +7,8 @@
 In the `ai-tutorial` directory:
 
 ```bash
-cd /Users/fredrik/source/ai-tutorial
-source venv/bin/activate
-python inference_server.py
+# In the ai-tutorial directory
+uv run inference_server.py
 ```
 
 You should see:

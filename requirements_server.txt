@@ -1,4 +1,0 @@
-# Additional dependencies for inference server
-flask==3.0.0
-flask-cors==4.0.0
-pillow==10.1.0
