@@ -31,12 +31,16 @@ interface DrawingCanvasProps {
     onClear?: () => void;
     onDrawingChange?: (hasDrawing: boolean) => void;
     canvasRef?: React.RefObject<ViewShot | null>;
+    onTouchStart?: () => void;
+    onTouchEnd?: () => void;
 }
 
 export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
     onClear,
     onDrawingChange,
     canvasRef: externalRef,
+    onTouchStart,
+    onTouchEnd,
 }) => {
     const internalRef = useRef<ViewShot>(null);
     const canvasRef = externalRef || internalRef;
@@ -77,6 +81,7 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
             onMoveShouldSetPanResponder: () => true,
 
             onPanResponderGrant: (evt: GestureResponderEvent) => {
+                onTouchStart?.();
                 const { locationX, locationY } = evt.nativeEvent;
                 setCurrentStroke([{ x: locationX, y: locationY }]);
             },
@@ -86,8 +91,14 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
                 setCurrentStroke(prev => [...prev, { x: locationX, y: locationY }]);
             },
 
-            onPanResponderRelease: handleRelease,
-            onPanResponderTerminate: handleRelease,
+            onPanResponderRelease: () => {
+                handleRelease();
+                onTouchEnd?.();
+            },
+            onPanResponderTerminate: () => {
+                handleRelease();
+                onTouchEnd?.();
+            },
         }),
     ).current;
 

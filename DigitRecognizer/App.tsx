@@ -27,6 +27,7 @@ const App: React.FC = () => {
   const [hasDrawing, setHasDrawing] = useState(false);
   const [prediction, setPrediction] = useState<PredictionResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const handleClear = () => {
     setHasDrawing(false);
@@ -61,13 +62,18 @@ const App: React.FC = () => {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="dark-content" />
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+        <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          scrollEnabled={scrollEnabled}
+        >
           <View style={styles.header}>
             <Text style={styles.title}>Digit Recognizer</Text>
             <Text style={styles.subtitle}>Draw a digit (0-9) below</Text>
           </View>
 
           <DrawingCanvas
+            onTouchStart={() => setScrollEnabled(false)}
+            onTouchEnd={() => setScrollEnabled(true)}
             canvasRef={canvasRef}
             onDrawingChange={setHasDrawing}
             onClear={handleClear}
