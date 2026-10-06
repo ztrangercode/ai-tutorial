@@ -24,8 +24,6 @@ const API_BASE_URL = hostIp ? `http://${hostIp}:5000` : 'http://localhost:5000';
 /**
  * Send image to inference server and get prediction
  */
-import { Alert } from 'react-native';
-
 // ...
 
 export async function predictDigit(
