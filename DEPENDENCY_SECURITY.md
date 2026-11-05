@@ -1,5 +1,17 @@
 # Dependency security update
 
+## Current follow-up: 2026-11-03
+
+Updated Pillow to 13.0.0 and refreshed certifi, filelock, nbconvert, setuptools and Tornado. The Python lock passes pip-audit for the local Windows platform with zero known vulnerabilities.
+
+The mobile app retains Expo 54 and React Native 0.81.5. Refreshed locked dependencies, scoped modern Glob/minimatch consumers to patched versions, and constrained React peers to the application's versions. npm audit now reports no high or critical findings; 59 moderate and 11 low affected packages remain, including ancestor packages of the older minimatch and unpatched deepmerge dependency chains. A global minimatch major override would break older callable-API consumers.
+
+Validation passed: locked Python environment synchronization, Flask health/prediction checks with a synthetic checkpoint, clean npm installation, TypeScript, the Jest render test and an Android JavaScript/Hermes bundle. Native-device builds were not tested.
+
+The October results below are historical and are superseded by this follow-up.
+
+## Previous remediation: 2026-10-06
+
 Checked on 2026-10-06 against 215 open GitHub Dependabot alerts.
 
 | Manifest | Original alerts | Result |
